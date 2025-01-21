@@ -26,7 +26,7 @@ classdef Filter < handle
             obj.f_l = f_l;
             obj.f_h = f_h;
             obj.SetFilter();
-            disp("Filter has been Set.");
+            fprintf("\n\n\nFilter has been Set.\n");
             obj.DisplayFilterFunction();
         end
 
