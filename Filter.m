@@ -9,7 +9,7 @@ classdef Filter < handle
         B; % Denominator Coefficents
         A; % Numerator Coefficients
         N = 4; % LPF Order
-        round_place = 20;
+        round_place = 9;
         numerator = [""];
         denominator = [""];
         numerator_arr = [];
@@ -21,10 +21,11 @@ classdef Filter < handle
     end
     
     methods (Access = public)
-        function obj = Filter(f_l, f_h)
+        function obj = Filter(f_l, f_h, round_place)
             %FILTER Construct an instance of this class
             obj.f_l = f_l;
             obj.f_h = f_h;
+            obj.round_place = round_place;
             obj.SetFilter();
             fprintf("\n\n\nFilter has been Set.\n");
             obj.DisplayFilterFunction();
@@ -68,6 +69,10 @@ classdef Filter < handle
             fprintf("\nFrequency: %dHz\n", f);
             fprintf("Filter Response: %0.4f %0.4fi (%0.4f)\n", real(filter_response), imag(filter_response), abs(filter_response));
             fprintf("Signal*Filter (1 Period): %0.4f %0.4fi (%0.4f)\n", real(22050 * filter_response), imag(22050 * filter_response), abs(22050 * filter_response));
+        end
+
+        function obj = GetPoles(obj)
+
         end
     end
 end
