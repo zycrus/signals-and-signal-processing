@@ -1,4 +1,4 @@
-classdef Filter < handle
+ qclassdef Filter < handle
     %FILTER Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -68,7 +68,7 @@ classdef Filter < handle
             filter_response = obj.numerator_response / obj.denominator_response;
             fprintf("\nFrequency: %dHz\n", f);
             fprintf("Filter Response: %0.4f %0.4fi (%0.4f)\n", real(filter_response), imag(filter_response), abs(filter_response));
-            fprintf("Signal*Filter (1 Period): %0.4f %0.4fi (%0.4f)\n", real(22050 * filter_response), imag(22050 * filter_response), abs(22050 * filter_response));
+            fprintf("Signal*Filter (1 Second): %0.4f %0.4fi (%0.4f)\n", real(-(j*22050) * filter_response), imag(-(j*22050) * filter_response), abs(-(j*22050) * filter_response));
         end
 
         function obj = GetPoles(obj)
